@@ -2,3 +2,18 @@
 .DS_Store
 artifacts/
 *.xcuserstate
+
+# Local secrets and signing credentials must never be committed.
+.env
+.env.*
+.secrets/
+secrets/
+*.p12
+*.pfx
+*.p8
+*.pem
+*.key
+*.keychain
+*.keychain-db
+*.mobileprovision
+*.provisionprofile

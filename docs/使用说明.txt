@@ -1,0 +1,43 @@
+HazeFocus 1.0.2
+
+安装：将 HazeFocus.app 拖入 Applications，双击打开。
+要求：macOS 13 或更新，支持 Apple Silicon 和 Intel Mac。
+
+第一次打开会显示设置。关闭设置窗口后，应用继续驻留菜单栏。
+支持中文和英文，跟随 macOS“系统设置 → 通用 → 语言与地区 → 应用程序”的语言偏好。
+基础模式无需授权即可运行；设置中的“去授权”可打开辅助功能设置，
+允许 HazeFocus 后，窗口切换与拖动跟随会更准确。无需屏幕录制权限。
+
+快速操作：
+  ⌃⌥⌘H             开启/暂停（可在设置中修改）
+  双击菜单栏图标     开启/暂停
+  Option 点按图标    开启/暂停
+  在图标上滚动       调整强度，滚动至 0 时暂停
+  按住 Fn           临时显示全部窗口，松开恢复
+
+设置：
+  聚焦：开关、强度、预览、登录时打开、辅助功能权限。
+  遮罩：当前窗口/当前应用、颜色、渐变、深浅色独立配置。
+  显示器：仅聚焦窗口/每屏前置窗口，可逐屏关闭。
+  应用例外：指定应用使用时自动暂停遮罩。
+
+AppleScript（应用位于“应用程序”时）：
+  tell application "HazeFocus" to set enabled to false
+  tell application "HazeFocus" to set intensity to 70
+  tell application "HazeFocus" to get enabled
+
+快捷指令：添加“URL”和“打开 URL”动作，填入以下地址之一：
+  hazefocus://on
+  hazefocus://off
+  hazefocus://toggle
+  hazefocus://intensity?value=70
+  hazefocus://settings
+
+当前版本限制：
+  未提供原生专注模式过滤器和独立的快捷指令动作，快捷指令通过 URL 控制。
+  窗口缩放、Mission Control、台前调度、第三方悬浮窗口等特殊场景
+  可能出现短暂的遮罩错位；多屏算法已测试，尚未在真实多屏硬件验证。
+  首次构建使用本机临时签名，未做 Apple Developer ID 公证。
+
+本应用参照 HazeOver 公开功能独立编写，不包含原应用代码和图标。
+本地保存设置，无账号、无遥测和网络服务。

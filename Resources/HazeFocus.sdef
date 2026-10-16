@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="HazeFocus">
+  <suite name="HazeFocus Suite" code="HZFC" description="Control window dimming.">
+    <class name="application" code="capp" description="HazeFocus application.">
+      <cocoa class="HazeFocusApplication"/>
+      <property name="enabled" code="hzen" type="boolean" description="Whether dimming is enabled."><cocoa key="hazeEnabled"/></property>
+      <property name="intensity" code="hzin" type="real" description="Dimming intensity from 0 to 100."><cocoa key="hazeIntensity"/></property>
+    </class>
+  </suite>
+</dictionary>

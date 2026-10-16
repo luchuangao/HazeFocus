@@ -2,6 +2,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 mode="${1:-native}"
+identity="${SIGNING_IDENTITY:--}"
+if [[ "$identity" != "-" && "$identity" != "Developer ID Application: "* ]]; then
+    echo 'SIGNING_IDENTITY must be a Developer ID Application certificate name.' >&2
+    exit 1
+fi
 app="$PWD/artifacts/HazeFocus.app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 if [[ "$mode" == "universal" ]]; then
@@ -24,6 +29,10 @@ cp Resources/Brand/LogoMark.png "$app/Contents/Resources/LogoMark.png"
 cp Resources/Brand/MenuBarTemplate.png "$app/Contents/Resources/MenuBarTemplate.png"
 cp Resources/Brand/MenuBarTemplate@2x.png "$app/Contents/Resources/MenuBarTemplate@2x.png"
 cp -R Resources/en.lproj Resources/zh-Hans.lproj "$app/Contents/Resources/"
-codesign --force --sign - --identifier com.luchuangao.hazefocus "$app"
+if [[ "$identity" == "-" ]]; then
+    codesign --force --sign - --identifier com.luchuangao.hazefocus "$app"
+else
+    codesign --force --sign "$identity" --options runtime --timestamp --identifier com.luchuangao.hazefocus "$app"
+fi
 codesign --verify --strict "$app"
 printf 'Built: %s\n' "$app"

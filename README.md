@@ -31,6 +31,8 @@ open artifacts/HazeFocus.app
 
 用 Xcode 打开 `Package.swift` 可编辑源码。直接运行 Swift Package 二进制不具有完整应用 Bundle，URL Scheme、脚本字典和登录项应通过打包后的 `.app` 验证。
 
+正式发行的 Developer ID 签名、Apple 公证和票据验证流程见 [公证说明](docs/NOTARIZATION.md)。凭据保存在本机钥匙串，仓库不保存密码和私钥。
+
 ```sh
 artifacts/HazeFocus.app/Contents/MacOS/HazeFocus --diagnostics
 artifacts/HazeFocus.app/Contents/MacOS/HazeFocus --render-check
